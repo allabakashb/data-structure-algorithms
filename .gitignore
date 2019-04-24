@@ -1,2 +1,10 @@
 node_modules/
 .idea/*
+java/.settings/*
+java/.gitignore
+java/.classpath
+java/.project
+java/bin/
+.metadata/*
+.recommenders/*
+RemoteSystemsTempFiles/*
