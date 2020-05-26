@@ -1,5 +1,3 @@
-```javascript
-
 function getMaxValue(w, v, maxWeight) {
 
 	let dp = [];
@@ -56,4 +54,9 @@ function print(dp, w, v, maxWeight) {
 	console.log(result);
 }
 
-```
+/*
+ w - Number of weights;
+ Time Complexity - O(w * maxWeight)
+ Space Complexity - O(w * maxWeight)
+ 
+*/
