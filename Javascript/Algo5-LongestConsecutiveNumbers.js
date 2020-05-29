@@ -35,5 +35,5 @@ function getConsecutiveNumbers(array) {
 
 /*
    Time Complexity - O(N^2);
-   Space Complexity - O(1); //Excluding Output
+   Space Complexity - O(N);
 */
