@@ -35,7 +35,7 @@ function largestSubSquareMatrix(matrix) {
 			
 				dp[i][j] = Math.min(dp[i-1][j], Math.min(dp[i][j-1], dp[i-1][j-1])) + 1;
 				
-				largestMatrix = Math.max(largestMatrix, dp[i][j])
+				largestMatrix = Math.max(largestMatrix, dp[i][j]);
 			}
 		}
 	}
@@ -47,5 +47,42 @@ function largestSubSquareMatrix(matrix) {
 
   Time Complexity - O(M*N)
   Space Complexity - O(M*N)
+  
+*/
+
+//Dynamic Programming Approach 2
+
+function largestSubSquareMatrix(matrix) {
+
+	let m = matrix.length, n = matrix[0].length;
+	
+	let dp = new Array(n+1).fill(0);
+	
+	let largestMatrix = 0, prev = 0;
+	for (let i = 0; i < m; i++) {
+	
+		for (let j = 1; j <= n; j++) {
+		
+			let temp = dp[j];
+			if (matrix[i][j-1] == 0) {
+				
+				dp[j] = 0;
+			} else {
+			
+				dp[j] = Math.min(dp[j-1], Math.min(dp[j], prev)) + 1;
+				
+				largestMatrix = Math.max(largestMatrix, dp[j]);
+			}
+			prev = dp[j];
+		}
+	}
+
+	return largestMatrix;
+}
+
+/*
+
+  Time Complexity - O(M*N)
+  Space Complexity - O(N)
   
 */
