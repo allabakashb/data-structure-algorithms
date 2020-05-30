@@ -73,7 +73,7 @@ function largestSubSquareMatrix(matrix) {
 				
 				largestMatrix = Math.max(largestMatrix, dp[j]);
 			}
-			prev = dp[j];
+			prev = temp;
 		}
 	}
 
