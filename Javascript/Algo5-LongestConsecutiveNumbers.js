@@ -39,7 +39,7 @@ function getConsecutiveNumbers(array) {
 */
 
 
-// Sorting
+//Using Sort
 function getConsecutiveNumbers(array) {
 
 	let result = []; 
@@ -86,6 +86,51 @@ function getConsecutiveNumbers(array) {
 /*
 
 Time Complexity - O(NlogN)
+Space Complexity - O(N)
+
+*/
+
+// Using Set
+
+function getConsecutiveNumbers(array) {
+
+	let set = new Set();
+	
+	let result = new Set();
+	
+	for (let i = 0; i < array.length; i++) {
+		
+		set.add(array[i]);
+	}
+	
+	for (let i = 0; i < array.length; i++) {
+	
+		if (!set.has(array[i]-1)) {
+		
+			let curr = new Set();
+			
+			curr.add(array[i]);
+			
+			let n = array[i] + 1;
+			
+			while (set.has(n)) {
+			
+				curr.add(n++);
+			}
+			
+			if (curr.size > result.size) {
+			
+				result = curr;
+			}
+		}
+	}
+	
+	return result;
+}
+
+/*
+
+Time Complexity - O(N)
 Space Complexity - O(N)
 
 */
