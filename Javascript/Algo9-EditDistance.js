@@ -76,3 +76,51 @@ function editDistance(word1, word2) {
  Space Complexity - O(M * N)
  
 */
+
+//Dynamic Programming Space Optimized
+function editDistance(word1, word2) {
+	
+	let m = word1.length, n = word2.length;
+    
+    	if (n == 0) return m;
+    
+    	if (m == 0) return n;
+	
+	let dp = new Array(n+1);
+    
+    	for (let j = 0; j <= n; j++) {
+        
+        	dp[j] = j;
+    	}
+	
+	let prev = 0;
+	for (let i = 0; i < m; i++) {
+	
+        	dp[0] = i + 1;
+		for (let j = 1; j <= n; j++) {
+		
+			let temp = dp[j];
+			
+			if (word1.charAt(i) == word2.charAt(j-1)) {
+				
+				dp[j] = prev;
+			} else {
+				
+				dp[j] = 1 + Math.min(prev, Math.min(dp[j], dp[j-1]));
+			}
+			
+			prev = temp;
+		}
+        
+        	prev = dp[0];
+	}
+	
+	return dp[n];
+}
+
+/*
+
+Time Complexity - O(M*N)
+Space Complexity - O(N)
+
+*/
