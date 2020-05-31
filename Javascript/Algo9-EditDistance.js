@@ -33,3 +33,46 @@ function editDistance(str1, str2) {
  Time Complexity - O(3^m)
  Space Complexity - O(D) - depth of the recursion
 */
+
+
+//Using Dynamic Programming
+function editDistance(word1, word2) {
+	
+	let m = word1.length, n = word2.length;
+	
+	let dp = new Array(m+1);
+    
+    for (let i = 0; i <= m; i++) {
+        
+        dp[i] = new Array(n).fill(0);
+        dp[i][0] = i;
+    }
+    
+    for (let j = 0; j <= n; j++) {
+        
+        dp[0][j] = j;
+    }
+	
+	for (let i = 1; i <= m; i++) {
+	
+		for (let j = 1; j <= n; j++) {
+		
+			if (word1.charAt(i-1) == word2.charAt(j-1)) {
+				
+				dp[i][j] = dp[i-1][j-1];
+			} else {
+				
+				dp[i][j] = 1 + Math.min(dp[i-1][j-1], Math.min(dp[i-1][j], dp[i][j-1]));
+			}
+		}
+	}
+	
+	return dp[m][n];
+}
+
+/*
+ 
+ Time Complexity - O(M * N)
+ Space Complexity - O(M * N)
+ 
+*/
